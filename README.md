@@ -41,7 +41,7 @@ mvn spring-boot:run
 ```
 #### Verify app is up and running
 ```
-curl http://localhost:8001/ref/health
+curl http://localhost:8001/refapp/health
 ```
 
 #### Rest Api Documentation
