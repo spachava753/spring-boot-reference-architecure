@@ -1,0 +1,12 @@
+classes/
+generated-sources/
+generated-test-sources/
+maven-archiver/
+maven-status/
+reports/
+surefire-reports/
+test-classes/
+test-results/
+www/
+!*.jar
+!*.war

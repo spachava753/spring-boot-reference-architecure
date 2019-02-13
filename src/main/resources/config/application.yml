@@ -1,0 +1,54 @@
+server:
+  servlet:
+    context-path: /refapp
+  port: ${PORT:8000}
+
+
+management:
+    endpoints:
+        web:
+            base-path: /management
+            exposure:
+                include: ["configprops", "env", "health", "info", "threaddump", "logfile", "metrics", "sessions"]
+    endpoint:
+        health:
+            show-details: always #when_authorized
+    health:
+        mail:
+            enabled: false 
+
+info:
+  app:
+    encoding: ${project.build.sourceEncoding}
+  java:
+    source: ${java.version}
+    target: ${java.version}
+
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: refapp
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  cloud:  
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+        bindings:
+          accounts-in:
+            destination: accounts
+            contentType: application/json
+          accounts-out:
+            destination: accounts
+            contentType: application/json
+
+hibernate:
+  hbm2ddl:
+    auto: 'create-drop'
+  
